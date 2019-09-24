@@ -1,0 +1,17 @@
+<div class = "task">
+  <div class = "nameClass"></div>
+  <div class = "CRUD"><button>update</button></div>
+  <div class="CRUD"><button>delete</button></div>
+</div>
+
+
+
+
+<form class="addTask" action="/accounts/{{user.id}}" method="POST">
+  <label for="title" class="sr-only">Название</label>
+  <input type="text" name="title" id="title" class="form-control" placeholder="название" required autofocus>
+  <label for="group" class="sr-only"></label>
+  <input type="text" name="group" id="group" class="form-control" placeholder="группа дел" required>
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Добавить</button>
+</form>
