@@ -1,0 +1,1 @@
+const updateButton = document.getElementById('updateButton');

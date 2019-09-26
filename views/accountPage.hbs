@@ -1,6 +1,6 @@
-<div class = "task">
-  <div class = "nameClass"></div>
-  <div class = "CRUD"><button>update</button></div>
+<div class="task">
+  <div class="nameClass"></div>
+  <div class="CRUD"><button>update</button></div>
   <div class="CRUD"><button>delete</button></div>
 </div>
 
@@ -12,6 +12,38 @@
   <input type="text" name="title" id="title" class="form-control" placeholder="название" required autofocus>
   <label for="group" class="sr-only"></label>
   <input type="text" name="group" id="group" class="form-control" placeholder="группа дел" required>
-  
+
   <button class="btn btn-lg btn-primary btn-block" type="submit">Добавить</button>
 </form>
+
+
+<h1 class="center">Items list</h1>
+<p>{{user.id}}</p>
+{{#if todolist}}
+{{!-- {{#if user}} --}}
+<main role="main">
+  {{#each todolist}}
+  <div class="task">
+    <div class="nameClass">{{this.title}}</div>
+    <div class="CRUD">
+      <a href="/accounts/{{../user.id}}/{{this._id}}/update">
+        <button>
+          update
+        </button>
+      </a>
+    </div>
+    <div class="CRUD"><button>delete</button></div>
+  </div>
+  {{!-- <li>
+      <p><b><i>title:</i></b> {{this.title}}</p>
+      <p><b><i>group:</i></b> {{this.group}}</p>
+      <p><b><i>done:</i></b> {{this.done}}</p>
+    </li>
+    <div><a href="/items/{{ this._id }}/edit" class="c-white">edit</a> <a href="/items/{{ this._id }}/delete"
+        class="c-white">delete</a>
+    </div>
+    <span>--------------------</span> --}}
+  {{/each}}
+</main>
+{{!-- {{/if}} --}}
+{{/if}}

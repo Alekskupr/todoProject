@@ -7,11 +7,6 @@ const userSchema = new mongoose.Schema({
   todolist: [],
 });
 
-// const taskSchema = new mongoose.Schema({
-//   title: String,
-//   group: String,
-//   done: Boolean,
-// });
 
 module.exports = mongoose.model('User', userSchema);
-// module.exports = mongoose.model('Task', taskSchema);
+

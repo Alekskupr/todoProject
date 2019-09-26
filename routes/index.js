@@ -6,7 +6,6 @@ const router = express.Router();
 const User = require('../models/User');
 const Task = require('../models/Task');
 
-
 router.get('/', (req, res) => {
   res.render('helloPage');
 });
@@ -21,7 +20,7 @@ router.post('/registration', async (req, res) => {
       login: req.body.login,
       password: req.body.password,
     });
-    console.log(user);
+    // console.log(user);
 
     await user.save();
     // req.session.user = user;
@@ -38,7 +37,7 @@ router.post('/entry', async (req, res) => {
   const { login } = req.body;
   const { password } = req.body;
   const user = await User.findOne({ login });
-  console.log(user);
+  // console.log(user);
 
   if (!user) {
     res.redirect('/entry');
@@ -51,11 +50,11 @@ router.post('/entry', async (req, res) => {
 });
 
 router.get('/accounts/:id', async (req, res) => {
-
   if (true) {
     const user = await User.findById(req.params.id);
     // console.log(user);
-    res.render('accountPage', { user });
+    const { todolist } = user;
+    res.render('accountPage', { user, todolist });
   } else {
     res.redirect('/entry');
   }
@@ -71,6 +70,25 @@ router.post('/accounts/:id', async (req, res) => {
   user.todolist.push(task);
   await user.save();
   res.redirect(`/accounts/${user.id}`);
+});
+
+router.get('/accounts/:user/:id/update', async (req, res) => {
+  const { id, user } = req.params;
+
+  const findTask = await User.findOne({ 'todolist._id': id });
+    // const findTask = await User.findOne();
+  console.log(findTask);
+  //   const users = await User.find({});
+  //   for (let i = 0; i < users.length; i++) {
+  //     if(users[i].todolist )
+  //   }
+  //   console.log(task);
+
+  //   // let taskFind = users.todolist.filter(id => req.params.id);
+  //   // console.log(taskFind);
+
+  //   // const task = await Task.findById(req.params.id);
+  //   // console.log(task);
 });
 
 module.exports = router;
