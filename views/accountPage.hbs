@@ -1,12 +1,3 @@
-<div class="task">
-  <div class="nameClass"></div>
-  <div class="CRUD"><button>update</button></div>
-  <div class="CRUD"><button>delete</button></div>
-</div>
-
-
-
-
 <form class="addTask" action="/accounts/{{user.id}}" method="POST">
   <label for="title" class="sr-only">Название</label>
   <input type="text" name="title" id="title" class="form-control" placeholder="название" required autofocus>
@@ -20,30 +11,20 @@
 <h1 class="center">Items list</h1>
 <p>{{user.id}}</p>
 {{#if todolist}}
-{{!-- {{#if user}} --}}
 <main role="main">
   {{#each todolist}}
-  <div class="task">
+  <div class="task" id = {{this._id}}>
     <div class="nameClass">{{this.title}}</div>
     <div class="CRUD">
-      <a href="/accounts/{{../user.id}}/{{this._id}}/update">
-        <button>
+      {{!-- <a href="/accounts/{{../user.id}}/{{this._id}}/update"> --}}
+        <button class = "updateButton">
           update
         </button>
-      </a>
+      {{!-- </a> --}}
     </div>
-    <div class="CRUD"><button>delete</button></div>
+    <div class = "deleteButton"><button>delete</button></div>
   </div>
-  {{!-- <li>
-      <p><b><i>title:</i></b> {{this.title}}</p>
-      <p><b><i>group:</i></b> {{this.group}}</p>
-      <p><b><i>done:</i></b> {{this.done}}</p>
-    </li>
-    <div><a href="/items/{{ this._id }}/edit" class="c-white">edit</a> <a href="/items/{{ this._id }}/delete"
-        class="c-white">delete</a>
-    </div>
-    <span>--------------------</span> --}}
   {{/each}}
 </main>
-{{!-- {{/if}} --}}
 {{/if}}
+<script src="/js/account.js"></script>
